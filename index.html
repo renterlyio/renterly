@@ -502,6 +502,31 @@ body{font-family:'Sora',sans-serif;background:var(--surface);color:var(--ink);li
 .reveal-wrap{text-align:center;}
 .reveal-num{font-size:96px;font-weight:900;letter-spacing:-.04em;color:#16a34a;line-height:1;}
 
+/* ─── HOW IT WORKS ─── */
+.hiw-section{background:#fff;padding:100px 48px;position:relative;overflow:hidden;}
+.hiw-section::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(0,128,201,.06) 0%,transparent 70%);pointer-events:none;}
+.hiw-label{font-size:12px;font-weight:700;color:#0080C9;letter-spacing:.1em;text-transform:uppercase;text-align:center;margin-bottom:14px;}
+.hiw-title{font-size:48px;font-weight:900;letter-spacing:-.03em;line-height:1.1;text-align:center;color:#1A1A2E;margin-bottom:16px;}
+.hiw-sub{font-size:18px;color:#6B7280;text-align:center;max-width:520px;margin:0 auto 72px;line-height:1.6;}
+.hiw-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;max-width:960px;margin:0 auto;}
+.hiw-connector{position:absolute;top:56px;left:calc(33.333% - 20px);width:calc(66.666% + 40px);height:2px;background:linear-gradient(to right,#0080C9,#CCE9F5,#0080C9);pointer-events:none;z-index:0;}
+.hiw-connector::before,.hiw-connector::after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:10px;height:10px;border-right:2px solid #0080C9;border-top:2px solid #0080C9;}
+.hiw-connector::before{right:calc(50% + 2px);transform:translateY(-50%) rotate(45deg);}
+.hiw-connector::after{right:-1px;transform:translateY(-50%) rotate(45deg);}
+.hiw-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 32px;position:relative;z-index:1;}
+.hiw-icon-wrap{width:112px;height:112px;border-radius:28px;background:#fff;border:2px solid #E2E8F0;display:flex;align-items:center;justify-content:center;margin-bottom:28px;position:relative;box-shadow:0 8px 32px rgba(0,128,201,.10);transition:transform .3s,box-shadow .3s;}
+.hiw-step:hover .hiw-icon-wrap{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,128,201,.2);}
+.hiw-step-num{position:absolute;top:-10px;right:-10px;width:28px;height:28px;border-radius:50%;background:#0080C9;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,128,201,.4);}
+.hiw-icon-wrap svg{width:52px;height:52px;}
+.hiw-step-title{font-size:20px;font-weight:800;color:#1A1A2E;margin-bottom:12px;letter-spacing:-.02em;}
+.hiw-step-desc{font-size:14px;color:#6B7280;line-height:1.7;max-width:240px;}
+/* scroll fade-in */
+@keyframes hiwFadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.hiw-animate{opacity:0;}
+.hiw-animate.visible{animation:hiwFadeUp .65s cubic-bezier(.22,1,.36,1) forwards;}
+.hiw-animate:nth-child(2){animation-delay:.15s;}
+.hiw-animate:nth-child(3){animation-delay:.3s;}
+
 </style>
 </head>
 <body>
@@ -577,6 +602,81 @@ body{font-family:'Sora',sans-serif;background:var(--surface);color:var(--ink);li
     </div>
   </div>
 </section>
+
+<!-- How It Works -->
+<section class="hiw-section" id="how-it-works">
+  <div class="hiw-label">Simple &amp; Transparent</div>
+  <h2 class="hiw-title">How It Works</h2>
+  <p class="hiw-sub">From application to decision in minutes — not days.</p>
+  <div class="hiw-steps" id="hiw-steps">
+    <div class="hiw-connector"></div>
+    <!-- Step 1 -->
+    <div class="hiw-step hiw-animate">
+      <div class="hiw-icon-wrap">
+        <div class="hiw-step-num">1</div>
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="52" height="52" rx="16" fill="#E6F4FB"/>
+          <!-- Person icon -->
+          <circle cx="26" cy="19" r="7" fill="#0080C9"/>
+          <path d="M12 40c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#0080C9" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Bank/Plaid link -->
+          <rect x="30" y="28" width="14" height="10" rx="3" fill="#0080C9" opacity=".85"/>
+          <path d="M33 31h8M33 34h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M35 25l4 3-4 3" stroke="#0080C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hiw-step-title">Tenant Applies</div>
+      <div class="hiw-step-desc">They fill out their profile and securely connect their bank account via Plaid in minutes.</div>
+    </div>
+    <!-- Step 2 -->
+    <div class="hiw-step hiw-animate">
+      <div class="hiw-icon-wrap">
+        <div class="hiw-step-num">2</div>
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="52" height="52" rx="16" fill="#E6F4FB"/>
+          <!-- Chart bars -->
+          <rect x="10" y="30" width="6" height="12" rx="2" fill="#CCE9F5"/>
+          <rect x="19" y="22" width="6" height="20" rx="2" fill="#0080C9" opacity=".7"/>
+          <rect x="28" y="16" width="6" height="26" rx="2" fill="#0080C9"/>
+          <!-- Lightning bolt / realtime -->
+          <path d="M40 10l-5 10h4l-5 12" stroke="#0080C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hiw-step-title">Score Calculated</div>
+      <div class="hiw-step-desc">Renterly analyzes income, debt-to-income ratio, credit, and rental history in real time.</div>
+    </div>
+    <!-- Step 3 -->
+    <div class="hiw-step hiw-animate">
+      <div class="hiw-icon-wrap">
+        <div class="hiw-step-num">3</div>
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="52" height="52" rx="16" fill="#E6F4FB"/>
+          <!-- Shield / verified badge -->
+          <path d="M26 10l14 5v9c0 8-6 14-14 17C18 38 12 32 12 24v-9l14-5z" fill="#CCE9F5" stroke="#0080C9" stroke-width="2"/>
+          <path d="M20 26l4 4 8-8" stroke="#0080C9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- R score chip -->
+          <rect x="30" y="32" width="16" height="11" rx="5.5" fill="#0080C9"/>
+          <text x="38" y="41" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="800" fill="white">R91</text>
+        </svg>
+      </div>
+      <div class="hiw-step-title">Landlord Decides</div>
+      <div class="hiw-step-desc">Landlords see a verified Renterly Score instead of raw documents — a clear, trusted signal.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('#hiw-steps .hiw-animate');
+  if(!els.length)return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.2});
+  els.forEach(function(el){io.observe(el);});
+})();
+</script>
 
 <!-- Mission -->
 <section class="sec-dark">

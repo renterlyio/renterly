@@ -624,6 +624,15 @@ input.frng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
 .login-apply-card-chips{display:flex;gap:12px;flex-wrap:wrap;}
 .login-apply-card-chip{font-size:11px;color:rgba(255,255,255,.6);}
 .login-apply-card-chip strong{color:white;}
+
+.btn-shortlist{padding:9px 16px;border-radius:10px;border:1.5px solid #E2E8F0;background:white;color:#6B7280;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.btn-shortlist:hover{border-color:#F59E0B;color:#F59E0B;}
+.btn-shortlist.on{background:#FEF3C7;border-color:#F59E0B;color:#D97706;}
+.acard.shortlisted{border-color:#F59E0B!important;background:#FFFBEB;}
+.shortlist-badge{position:absolute;top:0;left:22px;background:#F59E0B;color:white;font-size:9px;font-weight:800;padding:4px 10px;border-radius:0 0 8px 8px;letter-spacing:.06em;}
+.feed-empty{text-align:center;padding:60px 20px;color:#9CA3AF;}
+.feed-empty-icon{font-size:48px;margin-bottom:16px;}
+.feed-empty-title{font-size:18px;font-weight:700;color:#374151;margin-bottom:8px;}
 </style>
 </head>
 <body>
@@ -1111,8 +1120,8 @@ input.frng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
               <span class="fs-lbl">Status</span>
               <button class="fs-item on" onclick="feedFilter(this)"><span>All Applicants</span><span class="fs-cnt">12</span></button>
               <button class="fs-item" onclick="feedFilter(this)"><span>New this week</span><span class="fs-cnt">4</span></button>
-              <button class="fs-item" onclick="feedFilter(this)"><span>Shortlisted</span><span class="fs-cnt">3</span></button>
-              <button class="fs-item" onclick="feedFilter(this)"><span>Passed</span><span class="fs-cnt">5</span></button>
+              <button class="fs-item" onclick="feedFilter(this);filterShortlisted()"><span>Shortlisted</span><span class="fs-cnt" id="fs-cnt-sl">0</span></button>
+              <button class="fs-item" onclick="feedFilter(this);filterPassed()"><span>Passed</span><span class="fs-cnt" id="fs-cnt-passed">0</span></button>
             </div>
             <div class="fs-div"></div>
             <div class="fs-section">
@@ -1142,15 +1151,15 @@ input.frng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
             <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:14px;">
               <div>
                 <div style="font-size:26px;font-weight:900;letter-spacing:-.03em;color:#1A1A2E;font-family:'Sora',sans-serif;">Applicant Feed</div>
-                <div style="font-size:13px;color:#6B7280;margin-top:4px;">Unit 101 &middot; Cedar Crest Villas &middot; $2,400/mo &mdash; <strong style="color:#1A1A2E;">12 verified applicants</strong></div>
+                <div style="font-size:13px;color:#6B7280;margin-top:4px;">Unit 101 &middot; <span id="feed-subtitle">Cedar Crest Villas &middot; $2,400/mo — 5 verified applicants</span></div>
               </div>
               <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
                 <div class="live-ind"><span class="live-dot2"></span>Live applicants</div>
-                <select class="unit-dd" id="unit-selector">
-                  <option>Unit 101 — Cedar Crest Villas</option>
-                  <option>Unit 102 — Cedar Crest Villas</option>
-                  <option>Unit 201 — Harmony Hills</option>
-                  <option>Unit 301 — Infinity Edge</option>
+                <select class="unit-dd" id="unit-selector" onchange="switchUnit(this.value)">
+                  <option value="unit101">Unit 101 — Cedar Crest Villas</option>
+                  <option value="unit102">Unit 102 — Cedar Crest Villas</option>
+                  <option value="unit201">Unit 201 — Harmony Hills</option>
+                  <option value="unit301">Unit 301 — Infinity Edge</option>
                 </select>
               </div>
               <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -1160,190 +1169,8 @@ input.frng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
                 <button class="feed-sort" id="fsort-date" onclick="feedSort('date',this)">Date applied</button>
               </div>
             </div>
-            <!-- Card 1: Marcus J. -->
-            <div class="acard acard-top" id="ac-1">
-              <div class="acard-top-badge">TOP MATCH</div>
-              <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">
-                <div class="acard-av" style="background:#0080C9;">MJ</div>
-                <div style="flex:1;">
-                  <div class="acard-name">Marcus J.</div>
-                  <div class="acard-sub">Software Engineer &middot; Shopify &middot; Applied 2 hours ago</div>
-                  <div style="margin-top:10px;">
-                    <span class="atag atag-g">&#10003; Plaid verified</span>
-                    <span class="atag atag-b">5+ yrs renting</span>
-                    <span class="atag atag-g">No missed payments</span>
-                    <span class="atag atag-p">Move-in: Mar 1</span>
-                  </div>
-                </div>
-                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-                  <div class="acard-score">
-                    <div class="acard-score-n">91</div>
-                    <div class="acard-score-l">R Score</div>
-                    <div class="acard-score-bar"><div class="acard-score-fill" style="width:91%;"></div></div>
-                  </div>
-                  <div style="display:flex;gap:8px;">
-                    <button class="btn-approve" onclick="approveCard('ac-1',this)">Approve</button>
-                    <button class="btn-pass" onclick="passCard('ac-1')">Pass</button>
-                  </div>
-                </div>
-              </div>
-              <div style="height:1px;background:#E2E8F0;margin:14px 0 16px;"></div>
-              <div style="display:flex;gap:8px;align-items:center;">
-                <div class="astat"><div class="astat-v">$7,800</div><div class="astat-l">Mo. income</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">28%</div><div class="astat-l">DTI ratio</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">724</div><div class="astat-l">Credit</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">3.3x</div><div class="astat-l">Rent ratio</div></div>
-              </div>
-            </div>
-            <!-- Card 2: Sofia P. -->
-            <div class="acard" id="ac-2">
-              <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">
-                <div class="acard-av" style="background:#7C3AED;">SP</div>
-                <div style="flex:1;">
-                  <div class="acard-name">Sofia P.</div>
-                  <div class="acard-sub">UX Designer &middot; Shopify &middot; Applied 5 hours ago</div>
-                  <div style="margin-top:10px;">
-                    <span class="atag atag-g">&#10003; Plaid verified</span>
-                    <span class="atag atag-b">3–5 yrs renting</span>
-                    <span class="atag atag-g">No missed payments</span>
-                    <span class="atag atag-p">Move-in: Mar 15</span>
-                  </div>
-                </div>
-                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-                  <div class="acard-score">
-                    <div class="acard-score-n">86</div>
-                    <div class="acard-score-l">R Score</div>
-                    <div class="acard-score-bar"><div class="acard-score-fill" style="width:86%;"></div></div>
-                  </div>
-                  <div style="display:flex;gap:8px;">
-                    <button class="btn-approve" onclick="approveCard('ac-2',this)">Approve</button>
-                    <button class="btn-pass" onclick="passCard('ac-2')">Pass</button>
-                  </div>
-                </div>
-              </div>
-              <div style="height:1px;background:#E2E8F0;margin:14px 0 16px;"></div>
-              <div style="display:flex;gap:8px;align-items:center;">
-                <div class="astat"><div class="astat-v">$6,200</div><div class="astat-l">Mo. income</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">31%</div><div class="astat-l">DTI ratio</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">710</div><div class="astat-l">Credit</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">2.6x</div><div class="astat-l">Rent ratio</div></div>
-              </div>
-            </div>
-            <!-- Card 3: Daniel K. -->
-            <div class="acard" id="ac-3">
-              <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">
-                <div class="acard-av" style="background:#22C55E;">DK</div>
-                <div style="flex:1;">
-                  <div class="acard-name">Daniel K.</div>
-                  <div class="acard-sub">Project Manager &middot; Deloitte &middot; Applied yesterday</div>
-                  <div style="margin-top:10px;">
-                    <span class="atag atag-g">&#10003; Plaid verified</span>
-                    <span class="atag atag-b">2–3 yrs renting</span>
-                    <span class="atag atag-p">Move-in: Apr 1</span>
-                  </div>
-                </div>
-                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-                  <div class="acard-score">
-                    <div class="acard-score-n">82</div>
-                    <div class="acard-score-l">R Score</div>
-                    <div class="acard-score-bar"><div class="acard-score-fill" style="width:82%;"></div></div>
-                  </div>
-                  <div style="display:flex;gap:8px;">
-                    <button class="btn-approve" onclick="approveCard('ac-3',this)">Approve</button>
-                    <button class="btn-pass" onclick="passCard('ac-3')">Pass</button>
-                  </div>
-                </div>
-              </div>
-              <div style="height:1px;background:#E2E8F0;margin:14px 0 16px;"></div>
-              <div style="display:flex;gap:8px;align-items:center;">
-                <div class="astat"><div class="astat-v">$5,900</div><div class="astat-l">Mo. income</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">33%</div><div class="astat-l">DTI ratio</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">698</div><div class="astat-l">Credit</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">2.5x</div><div class="astat-l">Rent ratio</div></div>
-              </div>
-            </div>
-            <!-- Card 4: Priya M. -->
-            <div class="acard" id="ac-4">
-              <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">
-                <div class="acard-av" style="background:#F59E0B;">PM</div>
-                <div style="flex:1;">
-                  <div class="acard-name">Priya M.</div>
-                  <div class="acard-sub">Financial Analyst &middot; RBC &middot; Applied 2 days ago</div>
-                  <div style="margin-top:10px;">
-                    <span class="atag atag-g">&#10003; Plaid verified</span>
-                    <span class="atag atag-b">1–2 yrs renting</span>
-                    <span class="atag atag-p">Move-in: Mar 15</span>
-                  </div>
-                </div>
-                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-                  <div class="acard-score">
-                    <div class="acard-score-n" style="font-size:34px;">76</div>
-                    <div class="acard-score-l">R Score</div>
-                    <div class="acard-score-bar"><div class="acard-score-fill" style="width:76%;background:linear-gradient(to right,#F59E0B,#fbbf24);"></div></div>
-                  </div>
-                  <div style="display:flex;gap:8px;">
-                    <button class="btn-approve" onclick="approveCard('ac-4',this)">Approve</button>
-                    <button class="btn-pass" onclick="passCard('ac-4')">Pass</button>
-                  </div>
-                </div>
-              </div>
-              <div style="height:1px;background:#E2E8F0;margin:14px 0 16px;"></div>
-              <div style="display:flex;gap:8px;align-items:center;">
-                <div class="astat"><div class="astat-v">$5,100</div><div class="astat-l">Mo. income</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">36%</div><div class="astat-l">DTI ratio</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">682</div><div class="astat-l">Credit</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">2.1x</div><div class="astat-l">Rent ratio</div></div>
-              </div>
-            </div>
-            <!-- Card 5: James T. -->
-            <div class="acard" id="ac-5">
-              <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">
-                <div class="acard-av" style="background:#64748B;">JT</div>
-                <div style="flex:1;">
-                  <div class="acard-name">James T.</div>
-                  <div class="acard-sub">Accountant &middot; KPMG &middot; Applied 3 days ago</div>
-                  <div style="margin-top:10px;">
-                    <span class="atag atag-s">Manual docs</span>
-                    <span class="atag atag-b">1+ yr renting</span>
-                    <span class="atag atag-a">Move-in: Flexible</span>
-                  </div>
-                </div>
-                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
-                  <div class="acard-score">
-                    <div class="acard-score-n" style="font-size:34px;color:#F59E0B;">71</div>
-                    <div class="acard-score-l">R Score</div>
-                    <div class="acard-score-bar"><div class="acard-score-fill" style="width:71%;background:linear-gradient(to right,#F59E0B,#fbbf24);"></div></div>
-                  </div>
-                  <div style="display:flex;gap:8px;">
-                    <button class="btn-approve" onclick="approveCard('ac-5',this)">Approve</button>
-                    <button class="btn-pass" onclick="passCard('ac-5')">Pass</button>
-                  </div>
-                </div>
-              </div>
-              <div style="height:1px;background:#E2E8F0;margin:14px 0 16px;"></div>
-              <div style="display:flex;gap:8px;align-items:center;">
-                <div class="astat"><div class="astat-v">$4,800</div><div class="astat-l">Mo. income</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">38%</div><div class="astat-l">DTI ratio</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">665</div><div class="astat-l">Credit</div></div>
-                <div class="astat-divider"></div>
-                <div class="astat"><div class="astat-v">2.0x</div><div class="astat-l">Rent ratio</div></div>
-              </div>
-            </div>
-          </div><!-- /feed-main -->
+            <div id="feed-cards"></div>
+                    </div><!-- /feed-main -->
         </div><!-- /feed-layout -->
       </div><!-- /pg-feed -->
       <div class="page" id="pg-projects">
@@ -1698,6 +1525,7 @@ input.frng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
 function goApp(){document.getElementById('landing').classList.add('off');document.getElementById('app').classList.add('on');}
 function goLanding(){document.getElementById('landing').classList.remove('off');document.getElementById('app').classList.remove('on');}
 function goPage(name){
+  if(name==='feed'){setTimeout(function(){renderFeedCards(_currentUnit);},0);}
   document.querySelectorAll('.page').forEach(el=>el.classList.remove('on'));
   document.getElementById('pg-'+name).classList.add('on');
   document.querySelectorAll('.sb-btn').forEach(el=>el.classList.remove('on'));
@@ -1837,6 +1665,104 @@ function _populateApplyBanners(d){
     }catch(e){console.warn('Invalid apply link');}
   }
 })();
+
+/* --- FEED DATA & RENDERING --- */
+var _shortlisted={},_approved={},_passed={},_currentUnit='unit101';
+var unitMeta={
+  'unit101':{label:'Unit 101 — Cedar Crest Villas',rent:'$2,400'},
+  'unit102':{label:'Unit 102 — Cedar Crest Villas',rent:'$2,200'},
+  'unit201':{label:'Unit 201 — Harmony Hills',rent:'$1,950'},
+  'unit301':{label:'Unit 301 — Infinity Edge',rent:'$3,100'}
+};
+var unitApplicants={
+  'unit101':[
+    {id:'a1',initials:'MJ',color:'#0080C9',name:'Marcus J.',title:'Software Engineer · Shopify',time:'2 hours ago',score:91,topMatch:true,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'5+ yrs renting'},{t:'g',tx:'No missed payments'},{t:'p',tx:'Move-in: Mar 1'}],income:'$7,800',dti:'28%',credit:'724',ratio:'3.3x'},
+    {id:'a2',initials:'SP',color:'#7C3AED',name:'Sofia P.',title:'UX Designer · Shopify',time:'5 hours ago',score:86,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'3–5 yrs renting'},{t:'g',tx:'No missed payments'},{t:'p',tx:'Move-in: Mar 15'}],income:'$6,200',dti:'31%',credit:'710',ratio:'2.6x'},
+    {id:'a3',initials:'DK',color:'#22C55E',name:'Daniel K.',title:'Project Manager · Deloitte',time:'yesterday',score:82,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'2–3 yrs renting'},{t:'p',tx:'Move-in: Apr 1'}],income:'$5,900',dti:'33%',credit:'698',ratio:'2.5x'},
+    {id:'a4',initials:'PM',color:'#F59E0B',name:'Priya M.',title:'Financial Analyst · RBC',time:'2 days ago',score:76,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'1–2 yrs renting'},{t:'p',tx:'Move-in: Mar 15'}],income:'$5,100',dti:'36%',credit:'682',ratio:'2.1x'},
+    {id:'a5',initials:'JT',color:'#64748B',name:'James T.',title:'Accountant · KPMG',time:'3 days ago',score:71,tags:[{t:'s',tx:'Manual docs'},{t:'b',tx:'1+ yr renting'},{t:'a',tx:'Move-in: Flexible'}],income:'$4,800',dti:'38%',credit:'665',ratio:'2.0x'}
+  ],
+  'unit102':[
+    {id:'b1',initials:'RS',color:'#E11D48',name:'Rachel S.',title:'Marketing Manager · Google',time:'3 hours ago',score:88,topMatch:true,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'4+ yrs renting'},{t:'g',tx:'No missed payments'},{t:'p',tx:'Move-in: Mar 1'}],income:'$6,900',dti:'29%',credit:'718',ratio:'3.1x'},
+    {id:'b2',initials:'KL',color:'#0D9488',name:'Kevin L.',title:'Data Analyst · Salesforce',time:'yesterday',score:79,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'2–3 yrs renting'},{t:'p',tx:'Move-in: Apr 1'}],income:'$5,400',dti:'34%',credit:'694',ratio:'2.5x'},
+    {id:'b3',initials:'AW',color:'#EA580C',name:'Amy W.',title:'Nurse Practitioner · Ottawa General',time:'2 days ago',score:74,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'1–2 yrs renting'},{t:'a',tx:'Move-in: Flexible'}],income:'$4,950',dti:'37%',credit:'672',ratio:'2.3x'}
+  ],
+  'unit201':[
+    {id:'c1',initials:'JM',color:'#0080C9',name:'Jordan M.',title:'Product Manager · Microsoft',time:'6 hours ago',score:84,topMatch:true,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'3–5 yrs renting'},{t:'g',tx:'No missed payments'},{t:'p',tx:'Move-in: Mar 15'}],income:'$6,100',dti:'30%',credit:'706',ratio:'3.1x'},
+    {id:'c2',initials:'TR',color:'#7C3AED',name:'Tanya R.',title:'Graphic Designer · Freelance',time:'2 days ago',score:77,tags:[{t:'s',tx:'Manual docs'},{t:'b',tx:'2–3 yrs renting'},{t:'p',tx:'Move-in: Apr 15'}],income:'$4,700',dti:'35%',credit:'688',ratio:'2.4x'}
+  ],
+  'unit301':[
+    {id:'d1',initials:'CB',color:'#22C55E',name:'Chris B.',title:'Senior Developer · Amazon',time:'1 hour ago',score:92,topMatch:true,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'5+ yrs renting'},{t:'g',tx:'No missed payments'},{t:'p',tx:'Move-in: Mar 1'}],income:'$9,200',dti:'24%',credit:'741',ratio:'3.0x'},
+    {id:'d2',initials:'LN',color:'#0080C9',name:'Lisa N.',title:'Financial Advisor · TD Bank',time:'4 hours ago',score:85,tags:[{t:'g',tx:'✓ Plaid verified'},{t:'b',tx:'4+ yrs renting'},{t:'g',tx:'No missed payments'},{t:'p',tx:'Move-in: Mar 15'}],income:'$7,500',dti:'27%',credit:'722',ratio:'2.4x'}
+  ]
+};
+function buildCard(ap){
+  var id='ac-'+ap.id;
+  var isApp=!!_approved[ap.id],isPas=!!_passed[ap.id],isSL=!!_shortlisted[ap.id];
+  var cc='acard'+(ap.topMatch&&!isApp&&!isPas?' acard-top':'')+(isApp?' approved':'')+(isPas?' passed':'')+(isSL&&!isApp?' shortlisted':'');
+  var sc=ap.score>=80?'#0080C9':'#F59E0B';
+  var sf=ap.score>=80?'background:linear-gradient(to right,#0080C9,#38bdf8)':'background:linear-gradient(to right,#F59E0B,#fbbf24)';
+  var tags=ap.tags.map(function(t){return '<span class="atag atag-'+t.t+'">'+t.tx+'</span>';}).join('');
+  var tb=(ap.topMatch&&!isApp)?'<div class="acard-top-badge">TOP MATCH</div>':'';
+  var sb=(isSL&&!isApp)?'<div class="shortlist-badge">★ Shortlisted</div>':'';
+  var aLbl=isApp?'✓ Approved':'Approve';
+  var aSty=isApp?'background:#16a34a;':'';
+  var slLbl=isSL?'★ Shortlisted':'☆ Shortlist';
+  var slCls=isSL?'btn-shortlist on':'btn-shortlist';
+  return '<div class="'+cc+'" id="'+id+'">'+tb+sb+
+    '<div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;">'+
+    '<div class="acard-av" style="background:'+ap.color+';">'+ap.initials+'</div>'+
+    '<div style="flex:1;"><div class="acard-name">'+ap.name+'</div><div class="acard-sub">'+ap.title+' · Applied '+ap.time+'</div><div style="margin-top:10px;">'+tags+'</div></div>'+
+    '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">'+
+    '<div class="acard-score"><div class="acard-score-n" style="color:'+sc+';">'+ap.score+'</div><div class="acard-score-l">R Score</div><div class="acard-score-bar"><div class="acard-score-fill" style="width:'+ap.score+'%;'+sf+';"></div></div></div>'+
+    '<div style="display:flex;gap:7px;"><button class="btn-approve" style="'+aSty+'" onclick="approveCard(\''+id+'\',\''+ap.id+'\',this)">'+aLbl+'</button>'+
+    '<button class="'+slCls+'" onclick="shortlistCard(\''+id+'\',\''+ap.id+'\',this)">'+slLbl+'</button>'+
+    '<button class="btn-pass" onclick="passCard(\''+id+'\',\''+ap.id+'\')">Pass</button></div></div></div>'+
+    '<div style="height:1px;background:#E2E8F0;margin:14px 0 16px;"></div>'+
+    '<div style="display:flex;gap:8px;align-items:center;">'+
+    '<div class="astat"><div class="astat-v">'+ap.income+'</div><div class="astat-l">Mo. income</div></div><div class="astat-divider"></div>'+
+    '<div class="astat"><div class="astat-v">'+ap.dti+'</div><div class="astat-l">DTI ratio</div></div><div class="astat-divider"></div>'+
+    '<div class="astat"><div class="astat-v">'+ap.credit+'</div><div class="astat-l">Credit</div></div><div class="astat-divider"></div>'+
+    '<div class="astat"><div class="astat-v">'+ap.ratio+'</div><div class="astat-l">Rent ratio</div></div></div></div>';
+}
+function renderFeedCards(unitId){
+  var aps=unitApplicants[unitId]||[];
+  var c=document.getElementById('feed-cards');
+  if(!c)return;
+  if(!aps.length){c.innerHTML='<div class="feed-empty"><div class="feed-empty-icon">&#128235;</div><div class="feed-empty-title">No applicants yet</div><div>Share your apply link to start receiving applications.</div></div>';return;}
+  c.innerHTML=aps.map(buildCard).join('');
+  updateSidebarCounts(unitId);
+  updateFeedSubtitle(unitId);
+}
+function updateFeedSubtitle(unitId){
+  var m=unitMeta[unitId],aps=unitApplicants[unitId]||[];
+  var el=document.getElementById('feed-subtitle');
+  if(el&&m)el.textContent=m.label.split(' — ')[1]+' · '+m.rent+'/mo — '+aps.length+' verified applicants';
+}
+function updateSidebarCounts(unitId){
+  var aps=unitApplicants[unitId]||[];
+  var el=document.getElementById('fs-cnt-all');if(el)el.textContent=aps.length;
+  var el2=document.getElementById('fs-cnt-sl');if(el2)el2.textContent=aps.filter(function(a){return!!_shortlisted[a.id];}).length;
+  var el3=document.getElementById('fs-cnt-passed');if(el3)el3.textContent=aps.filter(function(a){return!!_passed[a.id];}).length;
+}
+function switchUnit(val){_currentUnit=val;renderFeedCards(val);}
+function approveCard(cid,aid,btn){_approved[aid]=true;_shortlisted[aid]=false;renderFeedCards(_currentUnit);}
+function shortlistCard(cid,aid,btn){_shortlisted[aid]=!_shortlisted[aid];renderFeedCards(_currentUnit);}
+function passCard(cid,aid){_passed[aid]=true;renderFeedCards(_currentUnit);}
+function filterShortlisted(){
+  var aps=unitApplicants[_currentUnit]||[],c=document.getElementById('feed-cards');
+  if(!c)return;
+  var f=aps.filter(function(a){return!!_shortlisted[a.id];});
+  if(!f.length){c.innerHTML='<div class="feed-empty"><div class="feed-empty-icon">&#9734;</div><div class="feed-empty-title">No shortlisted applicants</div><div>Click Shortlist on any card to save them here.</div></div>';return;}
+  c.innerHTML=f.map(buildCard).join('');
+}
+function filterPassed(){
+  var aps=unitApplicants[_currentUnit]||[],c=document.getElementById('feed-cards');
+  if(!c)return;
+  var f=aps.filter(function(a){return!!_passed[a.id];});
+  if(!f.length){c.innerHTML='<div class="feed-empty"><div class="feed-empty-icon">&#128168;</div><div class="feed-empty-title">No passed applicants</div></div>';return;}
+  c.innerHTML=f.map(buildCard).join('');
+}
 
 function backToLanding() {
   document.getElementById('landing').classList.remove('off');

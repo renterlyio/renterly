@@ -141,6 +141,7 @@ body{font-family:'Sora',sans-serif;background:var(--surface);color:var(--ink);li
 /* ─── SCREENS ─── */
 .screen{display:none;}
 .screen.on{display:block;}
+.screen:not(.on){display:none!important;}
 
 /* ─── LOGIN ─── */
 #s-login{min-height:100vh;background:linear-gradient(155deg,#070d1a 0%,#0d1f38 50%,#071424 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}

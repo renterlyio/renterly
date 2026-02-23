@@ -636,104 +636,111 @@ input.frng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
 .feed-empty-title{font-size:18px;font-weight:700;color:#374151;margin-bottom:8px;}
 
 /* ── Tenant Landing ─────────────────────────────────────────────────── */
-#s-tenant-landing{background:#0a1628;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;overflow-y:auto;}
+#s-tenant-landing{background:#080e1d;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;overflow-y:auto;}
 
 /* Nav */
-.tl-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 32px;background:#0a1628;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:100;}
-.tl-nav-logo{display:flex;align-items:center;gap:8px;font-size:1rem;font-weight:700;color:#fff;}
-.tl-nav-logo-icon{width:32px;height:32px;background:#0080C9;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;color:#fff;font-style:italic;}
-.tl-back-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;padding:10px 24px;border-radius:10px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
-.tl-back-btn:hover{background:rgba(255,255,255,.12);}
+.tl-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 40px;background:rgba(8,14,29,.9);border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.tl-nav-logo{display:flex;align-items:center;}
+.tl-nav-logo img{height:30px;}
+.tl-back-btn{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.2);color:#fff;padding:10px 28px;border-radius:10px;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.tl-back-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);}
 .tl-nav-right{display:flex;justify-content:flex-end;}
-.tl-create-btn{background:#3b82f6;border:none;color:#fff;padding:11px 24px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;transition:background .2s;}
-.tl-create-btn:hover{background:#2563eb;}
+.tl-create-btn{background:#2563eb;border:none;color:#fff;padding:11px 26px;border-radius:10px;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.tl-create-btn:hover{background:#1d4ed8;}
 
 /* Hero */
-.tl-hero{padding:80px 48px 60px;position:relative;overflow:hidden;}
-.tl-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.08) 1px,transparent 1px);background-size:72px 72px;pointer-events:none;}
-.tl-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.25);color:#93c5fd;padding:8px 18px;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:36px;position:relative;z-index:1;}
-.tl-badge-dot{width:6px;height:6px;border-radius:50%;background:#3b82f6;}
-.tl-h1{font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin:0 0 28px;max-width:860px;position:relative;z-index:1;}
+.tl-hero{padding:72px 40px 80px;position:relative;overflow:hidden;max-width:1200px;margin:0 auto;}
+.tl-grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.07) 1px,transparent 1px);background-size:72px 72px;pointer-events:none;z-index:0;}
+.tl-glow-1{position:fixed;top:-200px;right:-100px;width:700px;height:700px;background:radial-gradient(ellipse,rgba(37,99,235,.18) 0%,transparent 65%);pointer-events:none;z-index:0;}
+.tl-glow-2{position:fixed;bottom:-300px;left:-200px;width:800px;height:800px;background:radial-gradient(ellipse,rgba(124,58,237,.12) 0%,transparent 65%);pointer-events:none;z-index:0;}
+.tl-hero-inner{position:relative;z-index:1;}
+.tl-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.35);color:#93c5fd;padding:8px 20px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:36px;}
+.tl-badge-dot{width:6px;height:6px;border-radius:50%;background:#3b82f6;box-shadow:0 0 6px #3b82f6;}
+.tl-h1{font-size:clamp(3.5rem,6.5vw,6rem);font-weight:900;line-height:1.03;letter-spacing:-2.5px;margin:0 0 28px;max-width:100%;}
 .tl-h1 .blue{color:#60a5fa;}
-.tl-hero-sub{font-size:1.1rem;color:rgba(255,255,255,.55);max-width:680px;line-height:1.7;margin:0 0 44px;position:relative;z-index:1;}
-.tl-hero-btns{display:flex;gap:16px;margin-bottom:60px;position:relative;z-index:1;flex-wrap:wrap;}
-.tl-btn-primary{background:#3b82f6;color:#fff;border:none;padding:18px 36px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;min-width:260px;}
-.tl-btn-primary:hover{background:#2563eb;transform:translateY(-1px);}
-.tl-btn-outline{background:rgba(255,255,255,.05);color:#fff;border:1.5px solid rgba(255,255,255,.2);padding:18px 36px;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .2s;min-width:220px;}
+.tl-hero-sub{font-size:1.1rem;color:rgba(255,255,255,.5);max-width:660px;line-height:1.75;margin:0 0 44px;}
+.tl-hero-btns{display:flex;gap:16px;margin-bottom:64px;flex-wrap:wrap;}
+.tl-btn-primary{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:18px 40px;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 0 32px rgba(37,99,235,.35);}
+.tl-btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(37,99,235,.5);}
+.tl-btn-outline{background:rgba(255,255,255,.04);color:#fff;border:1.5px solid rgba(255,255,255,.18);padding:18px 36px;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .2s;}
 .tl-btn-outline:hover{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.08);}
 
 /* Stat cards */
-.tl-stat-row1{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin-bottom:16px;position:relative;z-index:1;}
-.tl-stat-row2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:580px;margin-bottom:0;position:relative;z-index:1;}
-.tl-stat-card{background:rgba(15,28,55,.7);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 24px;text-align:center;}
-.tl-stat-num{font-size:2.4rem;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:10px;}
+.tl-stat-row1{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;}
+.tl-stat-row2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:66.66%;}
+.tl-stat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:26px 22px;transition:border-color .2s;}
+.tl-stat-card:hover{border-color:rgba(37,99,235,.4);}
+.tl-stat-num{font-size:2.5rem;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1;margin-bottom:10px;}
 .tl-stat-num.green{color:#4ade80;}
 .tl-stat-num.blue{color:#60a5fa;}
-.tl-stat-lbl{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.tl-stat-lbl{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);}
 
-/* Steps section */
-.tl-steps-section{padding:100px 48px;max-width:1200px;margin:0 auto;}
+/* Sections */
+.tl-section-wrap{max-width:1200px;margin:0 auto;padding:100px 40px;}
 .tl-section-tag{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#60a5fa;margin-bottom:16px;}
-.tl-big-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin:0 0 16px;}
-.tl-lead{font-size:1.05rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:580px;margin:0 0 56px;}
+.tl-big-title{font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin:0 0 16px;}
+.tl-lead{font-size:1.05rem;color:rgba(255,255,255,.45);line-height:1.75;max-width:560px;margin:0 0 56px;}
+
+/* Steps */
 .tl-step-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.tl-step-card{background:rgba(15,28,55,.5);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;gap:20px;}
-.tl-step-num{width:40px;height:40px;border-radius:10px;background:#3b82f6;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;flex-shrink:0;}
+.tl-step-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;gap:18px;transition:border-color .2s,transform .2s;}
+.tl-step-card:hover{border-color:rgba(37,99,235,.4);transform:translateY(-3px);}
+.tl-step-num{width:40px;height:40px;border-radius:10px;background:rgba(37,99,235,.25);border:1px solid rgba(37,99,235,.4);display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:800;color:#93c5fd;}
 .tl-step-emoji{font-size:2rem;line-height:1;}
-.tl-step-card h4{font-size:1.05rem;font-weight:800;margin:0;line-height:1.2;}
-.tl-step-card p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6;margin:0;}
+.tl-step-card h4{font-size:1rem;font-weight:800;margin:0;line-height:1.2;}
+.tl-step-card p{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.65;margin:0;}
 
 /* Benefits */
-.tl-benefits-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+.tl-benefits-bg{background:rgba(37,99,235,.04);border-top:1px solid rgba(37,99,235,.12);border-bottom:1px solid rgba(37,99,235,.12);}
 .tl-benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px;}
-.tl-benefit-card{background:rgba(15,28,55,.5);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px 28px;display:flex;gap:20px;align-items:flex-start;}
-.tl-benefit-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
-.tl-benefit-icon.green{background:rgba(34,197,94,.15);}
-.tl-benefit-icon.blue{background:rgba(59,130,246,.15);}
-.tl-benefit-icon.purple{background:rgba(139,92,246,.15);}
-.tl-benefit-icon.gold{background:rgba(245,158,11,.15);}
+.tl-benefit-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:border-color .2s;}
+.tl-benefit-card:hover{border-color:rgba(37,99,235,.35);}
+.tl-benefit-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.tl-benefit-icon.green{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.2);}
+.tl-benefit-icon.blue{background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.2);}
+.tl-benefit-icon.purple{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.2);}
+.tl-benefit-icon.gold{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.2);}
 .tl-benefit-text h4{font-size:.95rem;font-weight:800;margin:0 0 8px;}
-.tl-benefit-text p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6;margin:0;}
+.tl-benefit-text p{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.65;margin:0;}
 
 /* Score */
-.tl-score-section{padding:100px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.tl-score-bars{display:flex;flex-direction:column;gap:20px;margin-top:36px;}
-.tl-bar-row{display:flex;flex-direction:column;gap:6px;}
+.tl-score-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.tl-score-bars{display:flex;flex-direction:column;gap:18px;margin-top:36px;}
+.tl-bar-row{display:flex;flex-direction:column;gap:7px;}
 .tl-bar-top{display:flex;justify-content:space-between;align-items:center;}
-.tl-bar-label{font-size:.88rem;color:rgba(255,255,255,.65);}
-.tl-bar-pct{font-size:.88rem;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tl-bar-label{font-size:.88rem;color:rgba(255,255,255,.6);}
+.tl-bar-pct{font-size:.85rem;font-weight:700;font-family:'JetBrains Mono',monospace;}
 .tl-bar-pct.green{color:#4ade80;}
 .tl-bar-pct.blue{color:#60a5fa;}
 .tl-bar-pct.orange{color:#fb923c;}
-.tl-bar-track{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;}
+.tl-bar-track{height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;}
 .tl-bar-fill{height:100%;border-radius:3px;}
-.tl-bar-fill.green{background:#4ade80;}
-.tl-bar-fill.blue{background:#3b82f6;}
-.tl-bar-fill.orange{background:#fb923c;}
-
-/* Ring */
-.tl-ring-wrap{display:flex;flex-direction:column;align-items:center;gap:24px;}
+.tl-bar-fill.green{background:linear-gradient(90deg,#16a34a,#4ade80);}
+.tl-bar-fill.blue{background:linear-gradient(90deg,#1d4ed8,#60a5fa);}
+.tl-bar-fill.orange{background:linear-gradient(90deg,#ea580c,#fb923c);}
+.tl-ring-wrap{display:flex;flex-direction:column;align-items:center;gap:28px;}
 .tl-ring{position:relative;width:240px;height:240px;}
 .tl-ring svg{position:absolute;inset:0;transform:rotate(-90deg);}
 .tl-ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.tl-ring-num{font-size:4rem;font-weight:900;color:#fff;line-height:1;}
-.tl-ring-lbl{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px;}
+.tl-ring-num{font-size:4.5rem;font-weight:900;color:#fff;line-height:1;}
+.tl-ring-lbl{font-size:.65rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:6px;}
 .tl-ring-badge{text-align:center;}
 .tl-ring-badge strong{font-size:1rem;font-weight:800;color:#4ade80;}
-.tl-ring-badge span{display:block;font-size:.8rem;color:rgba(255,255,255,.4);margin-top:4px;}
+.tl-ring-badge span{display:block;font-size:.8rem;color:rgba(255,255,255,.35);margin-top:4px;}
 
 /* CTA */
-.tl-cta-section{padding:100px 48px;text-align:center;}
-.tl-cta-section h2{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-1.5px;margin:0 0 20px;}
-.tl-cta-section p{font-size:1.05rem;color:rgba(255,255,255,.5);max-width:560px;margin:0 auto 40px;line-height:1.7;}
-.tl-cta-big-btn{background:#3b82f6;color:#fff;border:none;padding:20px 60px;border-radius:14px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .2s;}
-.tl-cta-big-btn:hover{background:#2563eb;transform:translateY(-2px);}
+.tl-cta-section{padding:100px 40px;text-align:center;position:relative;}
+.tl-cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(37,99,235,.12) 0%,transparent 65%);pointer-events:none;}
+.tl-cta-section h2{font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;letter-spacing:-1.5px;margin:0 0 20px;position:relative;z-index:1;}
+.tl-cta-section p{font-size:1.05rem;color:rgba(255,255,255,.45);max-width:520px;margin:0 auto 44px;line-height:1.75;position:relative;z-index:1;}
+.tl-cta-big-btn{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;padding:22px 64px;border-radius:16px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 0 48px rgba(37,99,235,.4);position:relative;z-index:1;}
+.tl-cta-big-btn:hover{transform:translateY(-3px);box-shadow:0 0 64px rgba(37,99,235,.6);}
 
 /* Footer */
-.tl-footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;}
-.tl-footer-logo{font-size:.9rem;font-weight:700;color:rgba(255,255,255,.5);}
+.tl-footer{padding:28px 40px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;}
+.tl-footer-logo{font-size:.9rem;font-weight:700;color:rgba(255,255,255,.4);}
 .tl-footer-logo span{color:#3b82f6;}
-.tl-footer p{font-size:.78rem;color:rgba(255,255,255,.25);margin:0;}
+.tl-footer p{font-size:.75rem;color:rgba(255,255,255,.22);margin:0;}
 
 </style>
 </head>
@@ -2042,17 +2049,25 @@ function tenantSwitchTab(name, el) {
 
 
 
+
 <div class="screen" id="s-tenant-landing">
+  <div class="tl-grid-bg"></div>
+  <div class="tl-glow-1"></div>
+  <div class="tl-glow-2"></div>
 
   <!-- NAV -->
   <nav class="tl-nav">
     <div class="tl-nav-logo">
-      <div class="tl-nav-logo-icon">R</div>
-      Renterly
+      <img id="tl-logo-img" alt="Renterly" style="height:30px;">
+      <script>
+        (function(){
+          var m=document.querySelector('.logo img[alt="Renterly"]');
+          var t=document.getElementById('tl-logo-img');
+          if(m&&t){t.src=m.src;}
+        })();
+      </script>
     </div>
-    <div>
-      <button class="tl-back-btn" onclick="backToLanding()">&larr; Back to Home</button>
-    </div>
+    <button class="tl-back-btn" onclick="backToLanding()">&larr; Back to Home</button>
     <div class="tl-nav-right">
       <button class="tl-create-btn" onclick="tenantShow('s-onboard')">Create My Profile</button>
     </div>
@@ -2060,29 +2075,29 @@ function tenantSwitchTab(name, el) {
 
   <!-- HERO -->
   <section class="tl-hero">
-    <div class="tl-grid-bg"></div>
-    <div class="tl-badge"><span class="tl-badge-dot"></span> FOR RENTERS</div>
-    <h1 class="tl-h1">Your rental<br>reputation,<br><span class="blue">verified &amp;<br>portable.</span></h1>
-    <p class="tl-hero-sub">Build a verified financial profile once. Share it with any landlord, on any listing &mdash; and get approved faster than everyone else in the pile.</p>
-    <div class="tl-hero-btns">
-      <button class="tl-btn-primary" onclick="tenantShow('s-onboard')">Build My Free Profile &rarr;</button>
-      <button class="tl-btn-outline" onclick="document.getElementById('tl-how').scrollIntoView({behavior:'smooth'})">See How It Works</button>
-    </div>
-    <!-- Stat cards -->
-    <div class="tl-stat-row1">
-      <div class="tl-stat-card"><div class="tl-stat-num green">91</div><div class="tl-stat-lbl">Renterly Score</div></div>
-      <div class="tl-stat-card"><div class="tl-stat-num green">$7,800</div><div class="tl-stat-lbl">Mo. Income</div></div>
-      <div class="tl-stat-card"><div class="tl-stat-num blue">28%</div><div class="tl-stat-lbl">DTI Ratio</div></div>
-    </div>
-    <div class="tl-stat-row2" style="margin-top:16px;">
-      <div class="tl-stat-card"><div class="tl-stat-num green">724</div><div class="tl-stat-lbl">Credit Score</div></div>
-      <div class="tl-stat-card"><div class="tl-stat-num green">5+</div><div class="tl-stat-lbl">Yrs Renting</div></div>
+    <div class="tl-hero-inner">
+      <div class="tl-badge"><span class="tl-badge-dot"></span> FOR RENTERS</div>
+      <h1 class="tl-h1">Your rental<br>reputation,<br><span class="blue">verified &amp;<br>portable.</span></h1>
+      <p class="tl-hero-sub">Build a verified financial profile once. Share it with any landlord, on any listing &mdash; and get approved faster than everyone else in the pile.</p>
+      <div class="tl-hero-btns">
+        <button class="tl-btn-primary" onclick="tenantShow('s-onboard')">Build My Free Profile &rarr;</button>
+        <button class="tl-btn-outline" onclick="document.getElementById('tl-how').scrollIntoView({behavior:'smooth'})">See How It Works</button>
+      </div>
+      <div class="tl-stat-row1">
+        <div class="tl-stat-card"><div class="tl-stat-num green">91</div><div class="tl-stat-lbl">Renterly Score</div></div>
+        <div class="tl-stat-card"><div class="tl-stat-num green">$7,800</div><div class="tl-stat-lbl">Mo. Income</div></div>
+        <div class="tl-stat-card"><div class="tl-stat-num blue">28%</div><div class="tl-stat-lbl">DTI Ratio</div></div>
+      </div>
+      <div class="tl-stat-row2">
+        <div class="tl-stat-card"><div class="tl-stat-num green">724</div><div class="tl-stat-lbl">Credit Score</div></div>
+        <div class="tl-stat-card"><div class="tl-stat-num green">5+</div><div class="tl-stat-lbl">Yrs Renting</div></div>
+      </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
   <section id="tl-how">
-    <div class="tl-steps-section">
+    <div class="tl-section-wrap">
       <div class="tl-section-tag">Simple Process</div>
       <h2 class="tl-big-title">Set up once.<br>Apply everywhere.</h2>
       <p class="tl-lead">No more digging up pay stubs for every application. Your verified profile does the talking.</p>
@@ -2116,8 +2131,8 @@ function tenantSwitchTab(name, el) {
   </section>
 
   <!-- BENEFITS -->
-  <section>
-    <div class="tl-benefits-section">
+  <div class="tl-benefits-bg">
+    <div class="tl-section-wrap">
       <h2 class="tl-big-title">Stop proving yourself<br>over and over.</h2>
       <p class="tl-lead">One verified profile. Every application.</p>
       <div class="tl-benefit-grid">
@@ -2151,53 +2166,55 @@ function tenantSwitchTab(name, el) {
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- SCORE -->
   <section>
-    <div class="tl-score-section">
-      <div>
-        <div class="tl-section-tag">Your Renterly Score</div>
-        <h2 class="tl-big-title">What goes<br>into<br>your score?</h2>
-        <p class="tl-lead">Five factors. All verified. Calculated automatically when you connect your bank.</p>
-        <div class="tl-score-bars">
-          <div class="tl-bar-row">
-            <div class="tl-bar-top"><span class="tl-bar-label">Income Stability</span><span class="tl-bar-pct green">92%</span></div>
-            <div class="tl-bar-track"><div class="tl-bar-fill green" style="width:92%"></div></div>
-          </div>
-          <div class="tl-bar-row">
-            <div class="tl-bar-top"><span class="tl-bar-label">Debt-to-Income Ratio</span><span class="tl-bar-pct blue">80%</span></div>
-            <div class="tl-bar-track"><div class="tl-bar-fill blue" style="width:80%"></div></div>
-          </div>
-          <div class="tl-bar-row">
-            <div class="tl-bar-top"><span class="tl-bar-label">Rental History</span><span class="tl-bar-pct green">96%</span></div>
-            <div class="tl-bar-track"><div class="tl-bar-fill green" style="width:96%"></div></div>
-          </div>
-          <div class="tl-bar-row">
-            <div class="tl-bar-top"><span class="tl-bar-label">Credit Health</span><span class="tl-bar-pct orange">68%</span></div>
-            <div class="tl-bar-track"><div class="tl-bar-fill orange" style="width:68%"></div></div>
-          </div>
-          <div class="tl-bar-row">
-            <div class="tl-bar-top"><span class="tl-bar-label">Asset Coverage</span><span class="tl-bar-pct blue">79%</span></div>
-            <div class="tl-bar-track"><div class="tl-bar-fill blue" style="width:79%"></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="tl-ring-wrap">
-        <div class="tl-ring">
-          <svg viewBox="0 0 240 240" fill="none">
-            <circle cx="120" cy="120" r="96" stroke="rgba(255,255,255,.08)" stroke-width="22"/>
-            <circle cx="120" cy="120" r="96" stroke="#3b82f6" stroke-width="22"
-              stroke-linecap="round" stroke-dasharray="603.19" stroke-dashoffset="60"/>
-          </svg>
-          <div class="tl-ring-center">
-            <div class="tl-ring-num">91</div>
-            <div class="tl-ring-lbl">R Score</div>
+    <div class="tl-section-wrap">
+      <div class="tl-score-grid">
+        <div>
+          <div class="tl-section-tag">Your Renterly Score</div>
+          <h2 class="tl-big-title">What goes<br>into<br>your score?</h2>
+          <p class="tl-lead">Five factors. All verified. Calculated automatically when you connect your bank.</p>
+          <div class="tl-score-bars">
+            <div class="tl-bar-row">
+              <div class="tl-bar-top"><span class="tl-bar-label">Income Stability</span><span class="tl-bar-pct green">92%</span></div>
+              <div class="tl-bar-track"><div class="tl-bar-fill green" style="width:92%"></div></div>
+            </div>
+            <div class="tl-bar-row">
+              <div class="tl-bar-top"><span class="tl-bar-label">Debt-to-Income Ratio</span><span class="tl-bar-pct blue">80%</span></div>
+              <div class="tl-bar-track"><div class="tl-bar-fill blue" style="width:80%"></div></div>
+            </div>
+            <div class="tl-bar-row">
+              <div class="tl-bar-top"><span class="tl-bar-label">Rental History</span><span class="tl-bar-pct green">96%</span></div>
+              <div class="tl-bar-track"><div class="tl-bar-fill green" style="width:96%"></div></div>
+            </div>
+            <div class="tl-bar-row">
+              <div class="tl-bar-top"><span class="tl-bar-label">Credit Health</span><span class="tl-bar-pct orange">68%</span></div>
+              <div class="tl-bar-track"><div class="tl-bar-fill orange" style="width:68%"></div></div>
+            </div>
+            <div class="tl-bar-row">
+              <div class="tl-bar-top"><span class="tl-bar-label">Asset Coverage</span><span class="tl-bar-pct blue">79%</span></div>
+              <div class="tl-bar-track"><div class="tl-bar-fill blue" style="width:79%"></div></div>
+            </div>
           </div>
         </div>
-        <div class="tl-ring-badge">
-          <strong>Strong Applicant &#127881;</strong>
-          <span>Top 12% of all Renterly renters</span>
+        <div class="tl-ring-wrap">
+          <div class="tl-ring">
+            <svg viewBox="0 0 240 240" fill="none">
+              <circle cx="120" cy="120" r="96" stroke="rgba(255,255,255,.07)" stroke-width="24"/>
+              <circle cx="120" cy="120" r="96" stroke="#3b82f6" stroke-width="24"
+                stroke-linecap="round" stroke-dasharray="603.19" stroke-dashoffset="60"/>
+            </svg>
+            <div class="tl-ring-center">
+              <div class="tl-ring-num">91</div>
+              <div class="tl-ring-lbl">R Score</div>
+            </div>
+          </div>
+          <div class="tl-ring-badge">
+            <strong>Strong Applicant &#127881;</strong>
+            <span>Top 12% of all Renterly renters</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2205,6 +2222,7 @@ function tenantSwitchTab(name, el) {
 
   <!-- CTA -->
   <section class="tl-cta-section">
+    <div class="tl-cta-glow"></div>
     <h2>Ready to stand out?</h2>
     <p>Build your verified rental profile in 5 minutes. It&rsquo;s completely free for tenants &mdash; forever.</p>
     <button class="tl-cta-big-btn" onclick="tenantShow('s-onboard')">Build My Free Profile &rarr;</button>
@@ -2213,7 +2231,7 @@ function tenantSwitchTab(name, el) {
   <!-- FOOTER -->
   <footer class="tl-footer">
     <div class="tl-footer-logo">Renter<span>ly</span></div>
-    <p>&copy; 2025 Renterly Inc. &middot; Free for tenants, always.</p>
+    <p>&copy; 2025 Renterly &middot; Free for tenants, always.</p>
   </footer>
 
 </div>
